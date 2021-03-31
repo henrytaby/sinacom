@@ -118,7 +118,7 @@ public class FormularioM03 {
         this.activo = true;
         this.usuarioRegistro = "SENARECOM";
         this.fechaRegistro = LocalDateTime.now();
-        this.idExportador = 4;
+        //this.idExportador = 4;
     }
 
     public Integer getIdExportador() {

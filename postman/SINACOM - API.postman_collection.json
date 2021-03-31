@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "5f502a81-68d3-47ab-9892-81da3311e604",
+		"name": "SINACOM - API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authenticate",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"postman.clearEnvironmentVariable(\"jwt\");\r",
+							"postman.clearEnvironmentVariable(\"Authorization\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"jwt\", jsonData.jwt);\r",
+							"postman.setEnvironmentVariable(\"Authorization\", \"Bearer \"+jsonData.jwt);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"{{username}}\",\r\n    \"password\":\"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/authenticate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-all",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/formm03/all",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/formm03/55916",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"55916"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-productPresentation-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/formm03/productPresentation/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"productPresentation",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"02-21-20911-30044\",\r\n    \"comercialInvoiceNumber\": 5,\r\n    \"analysisCertificate\": \"00093-21-MIN\",\r\n    \"commercialInvoiceDate\": \"2021-03-31\",\r\n    \"exportDate\": \"2021-03-31\",\r\n    \"buyerSocialReason\": \"INTL HRM KIYMETLI MADENLER ANONIM SIRKETI\",\r\n    \"valueFobDollars\": 2542500.0,\r\n    \"productPresentationId\": 11,\r\n    \"grossWetWeightKilograms\": 0.0,\r\n    \"taraKilograms\": 0.0,\r\n    \"wetNetWeightKilograms\": 0.0,\r\n    \"humidityPercentage\": 0.0,\r\n    \"decreasePercentage\": 0.0,\r\n    \"decreaseKilograms\": 0.0,\r\n    \"netDryWeightKilograms\": 45.0,\r\n    \"lotNumber\": \"P-040\",\r\n    \"totalGrossValueSaleDollars\": 2510937.22,\r\n    \"totalGrossValueSaleBolivianos\": 1.747612303E7,\r\n    \"expenditureRealizationPercentage\": -1.26,\r\n    \"netValueSaleBolivianos\": 1.76958E7,\r\n    \"costMarketingPercentage\": 20.0,\r\n    \"totalInstitutionalDeductionsBolivians\": 0.0,\r\n    \"liquidPayableBolivianos\": 1.76958E7,\r\n    \"parametricProductPresentation\": {\r\n        \"productPresentationId\": 11,\r\n        \"description\": \"Sin Asignacion\",\r\n        \"active\": true\r\n    },\r\n    \"exporterId\": 5,\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/formm03/save",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-Update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"formM03Id\": 4,\r\n    \"code\": \"05-21-20112-30033\",\r\n    \"comercialInvoiceNumber\": 19,\r\n    \"analysisCertificate\": \"21030900930\",\r\n    \"commercialInvoiceDate\": \"2021-03-31\",\r\n    \"exportDate\": \"2021-03-31\",\r\n    \"buyerSocialReason\": \"BLACK ROCK RESOURCES LLP\",\r\n    \"valueFobDollars\": 497721.57,\r\n    \"productPresentationId\": 1,\r\n    \"grossWetWeightKilograms\": 0.0,\r\n    \"taraKilograms\": 0.0,\r\n    \"wetNetWeightKilograms\": 600000.0,\r\n    \"humidityPercentage\": 8.9,\r\n    \"decreasePercentage\": 1.0,\r\n    \"decreaseKilograms\": 5466.0,\r\n    \"netDryWeightKilograms\": 541134.0,\r\n    \"lotNumber\": \"ZN-BR-04/21\",\r\n    \"totalGrossValueSaleDollars\": 904948.31,\r\n    \"totalGrossValueSaleBolivianos\": 6298440.22,\r\n    \"expenditureRealizationPercentage\": 45.0,\r\n    \"netValueSaleBolivianos\": 3464142.0,\r\n    \"costMarketingPercentage\": 20.0,\r\n    \"totalInstitutionalDeductionsBolivians\": 0.0,\r\n    \"liquidPayableBolivianos\": 0.0,\r\n    \"parametricProductPresentation\": null,\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/formm03/save",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "formM03-delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/formm03/delete/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"formm03",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
