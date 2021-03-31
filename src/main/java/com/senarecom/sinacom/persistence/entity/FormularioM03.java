@@ -12,6 +12,9 @@ public class FormularioM03 {
     @Column(name="id")
     private Integer idFormularioM03;
 
+    @Column(name="id_exportador")
+    private Integer idExportador;
+
     @Column(name="codigo")
     private String codigo;
 
@@ -91,17 +94,25 @@ public class FormularioM03 {
     @Column(name="fecha_registro")
     private LocalDateTime fechaRegistro;
 
-    @Column(name="id_exportador")
-    private Integer idExportador;
-
-
     /*
     La relacion de la tabla
      */
+
+    @ManyToOne
+    @JoinColumn(name="id_exportador", insertable = false, updatable = false)
+    private Exportador exportador;
+
     @ManyToOne
     @JoinColumn(name="id_presentacion_producto", insertable = false, updatable = false)
     private ParametricaPresentacionProducto parametricaPresentacionProducto;
 
+    public Exportador getExportador() {
+        return exportador;
+    }
+
+    public void setExportador(Exportador exportador) {
+        this.exportador = exportador;
+    }
 
     public FormularioM03(){
         this.activo = true;

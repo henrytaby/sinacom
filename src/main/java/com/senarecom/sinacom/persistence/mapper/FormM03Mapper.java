@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ParametricProductPresentationMapper.class})
+@Mapper(componentModel = "spring", uses = {ParametricProductPresentationMapper.class,ExportadorMapper.class})
 public interface FormM03Mapper {
     @Mappings({
             @Mapping(source = "idFormularioM03", target = "formM03Id"),
@@ -36,8 +36,10 @@ public interface FormM03Mapper {
             @Mapping(source = "costoComercializacionPorcentaje", target = "costMarketingPercentage"),
             @Mapping(source = "totalDeduccionesInstitucionalesBolivianos", target = "totalInstitutionalDeductionsBolivians"),
             @Mapping(source = "liquidoPagableBolivianos", target = "liquidPayableBolivianos"),
+            @Mapping(source = "activo", target = "active"),
             @Mapping(source = "parametricaPresentacionProducto", target = "parametricProductPresentation"),
-            @Mapping(source = "activo", target = "active")
+            @Mapping(source = "idExportador", target = "exporterId"),
+            @Mapping(source = "exportador", target = "exporter")
     })
     FormM03 toFormM03(FormularioM03 formularioM03);
     List<FormM03> toFormM03s(List<FormularioM03> formularioM03s);

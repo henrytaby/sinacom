@@ -34,11 +34,30 @@ public class FormM03 {
     private double totalInstitutionalDeductionsBolivians;
     private double liquidPayableBolivianos;
     private ParametricProductPresentation parametricProductPresentation;
+    private Integer exporterId;
+    private Exporter exporter;
 
     /*
    Variables que debe guardar de forma interna y que no pueden ser nulas
     */
     private boolean active;
+
+
+    public Integer getExporterId() {
+        return exporterId;
+    }
+
+    public void setExporterId(Integer exporterId) {
+        this.exporterId = exporterId;
+    }
+
+    public Exporter getExporter() {
+        return exporter;
+    }
+
+    public void setExporter(Exporter exporter) {
+        this.exporter = exporter;
+    }
 
     public boolean isActive() {
         return active;
